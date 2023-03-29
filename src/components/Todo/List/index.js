@@ -1,6 +1,15 @@
-import React from 'react'
+import { useState } from 'react'
+import { MdDelete, MdDeleteOutline, MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
 
 function List({ setDone, tasks }) {
+
+  const [isHovered, setIsHovered] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  }
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  }
 
   const handleCheckboxChange = (index) => {
     const updatedTasks = tasks.map((item, i) => {
@@ -30,12 +39,35 @@ function List({ setDone, tasks }) {
                 checked={item.status}
                 onChange={() => handleCheckboxChange(i)}
               />
+              {item.status ? (
+                <div className='md-filled' >
+                  <MdCheckBox />
+                </div>
+
+              ) : (
+                <div className='md-outline'>
+                  <MdCheckBoxOutlineBlank />
+                </div>
+
+              )}
+
+              <span>{item.task_name}</span>
+              <button className='delete-button' onClick={() => handleDeleteClick(i)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                {isHovered ? <MdDelete /> : <MdDeleteOutline />}
+              </button>
+            </label>
+            {/* <label className="todo-label">
+              <input
+                type='checkbox'
+                checked={item.status}
+                onChange={() => handleCheckboxChange(i)}
+              />
 
               <i className="check"></i>
 
               <span>{item.task_name}</span>
-              <button onClick={() => handleDeleteClick(i)}>Delete</button>
-            </label>
+              <button className='delete-button' onClick={() => handleDeleteClick(i)}><MdDeleteOutline/></button>
+            </label> */}
           </li>
         ))}
       </ul>

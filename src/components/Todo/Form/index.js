@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { FaPlus } from "react-icons/fa";
+import { MdAdd } from "react-icons/md";
 
 const initialFormValues = { task_name: "", status: false };
 
@@ -79,13 +79,13 @@ function Form({ addTask, tasks }) {
                 <input
                     name="task_name"
                     type="text"
-                    placeholder='Task Name'
+                    placeholder='Add something to do'
                     value={form.task_name}
                     onChange={onChangeInput}
                     onClick={handleInputClick}
-                    
+                    autoComplete="off"      
                 ></input>
-                <button><FaPlus className="floating-button-icon" /></button>
+                <button><MdAdd className="floating-button-icon" /></button>
             </form>
 
 

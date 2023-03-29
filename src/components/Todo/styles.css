@@ -35,16 +35,17 @@
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     padding-top: 12px;
     box-sizing: border-box;
 }
 
 .list>li {
     background-color: #FFFFFF;
-    margin: 6px 32px;
+    margin: 10px 32px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 6px 16px;
 }
@@ -59,10 +60,33 @@
     cursor: pointer;
 }
 
+.todo-label input[type="checkbox"] {
+    position: absolute;
+    visibility: hidden;
+}
+
+.md-filled, .md-outline{
+    display: flex;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 42px;
+    width: 42px;
+    font-size: 24px;
+    transition: all 0.2s ease-in-out;
+    align-items: center;
+    justify-content: center;
+    color: #915A12
+}
+
+.md-filled:hover, .md-outline:hover{
+    background-color: #f5f5f5;
+}
+
 .todo-label input[type="checkbox"]~span {
     flex-grow: 1;
     padding: 0 20px;
-    white-space: nowrap;
+    white-space: wrap;
     transition: 0.5s;
 }
 
@@ -81,6 +105,28 @@
 .todo-label input[type="checkbox"]:checked~span {
     color: #585b57;
     text-decoration: line-through;
+}
+
+.delete-button{
+    display: flex;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 42px;
+    width: 42px;
+    font-size: 24px;
+    transition: all 0.2s ease-in-out;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.list>li:hover .delete-button{
+    visibility:visible;
+}
+.delete-button:hover{
+    background-color: #ddd;
 }
 
 /*Form Alanı Dekorasyonu*/
@@ -120,11 +166,14 @@
     border-radius: 50%;
     background-color: #FFF;
     color: #d4a373;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 2rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
     outline: none;
     border: none;
     cursor: pointer;
 }
+
+
+  
+  
