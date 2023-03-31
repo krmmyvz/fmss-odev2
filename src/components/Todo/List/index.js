@@ -45,15 +45,14 @@ function List({ setDone, tasks }) {
 
   return (
     <>
+      <div id='lists'>
       <div className='filter-container'>
         <button onClick={handleAllTasks}>All</button>
         <button onClick={handleActiveTasks}>Active</button>
         <button onClick={handleCompletedTasks}>Completed</button>
       </div>
-      <div id='lists'>
         <ul className='list'>
           {tasks.map((item, i) => (
-
             <li key={i}  >
               <label className="todo-label">
                 <input
