@@ -6,8 +6,12 @@ Patika.dev linkim: "https://app.patika.dev/keremyvz"
 
 Bu basit React uygulaması, bir kullanıcının yapması gereken görevleri kolayca takip edebilmesi için tasarlanmıştır. Kullanıcılar, uygulama aracılığıyla görev ekleyebilir, tamamlandığında işaretleyebilir ve silinebilir.
 
-![Ekran Görüntüsü](https://github.com/krmmyvz/fmss-odev1/blob/main/Console%20Output.png)
+![Ekran Görüntüsü](https://github.com/krmmyvz/fmss-odev2/blob/main/Screenshot.png)
 
+## Uygulama Bağlantısı
+
+Uygulama, Vercel üzerinde canlı olarak yayınlanmaktadır. Aşağıdaki link üzerinden erişebilirsiniz:
+[https://example-todo-app.vercel.app/](https://fmss-odev2.vercel.app/)
 ## Özellikler
 
 - Kullanıcılar görev ekleyebilir ve tamamlandıklarında işaretleyebilir.
@@ -21,27 +25,5 @@ Bu basit React uygulaması, bir kullanıcının yapması gereken görevleri kola
 2. `npm install` komutunu çalıştırarak gerekli bağımlılıkları yükleyin.
 3. `npm start` komutunu çalıştırarak konsol uygulamasını başlatın. Uygulama,  [link](http://localhost:3000).adresinde çalışacaktır.
 
-### Fonksiyon Açıklaması
 
-Bu ödevde, default olarak dışa aktarılan ve async olarak tanımlanan bir fonksiyon yazmanız gerekmektedir. Bu fonksiyon, Number tipinde bir parametre almalı ve bu parametre user id'yi belirtmelidir. Fonksiyonun görevi, verilen user id'ye göre ilgili kullanıcının verilerini ve post'larını API'dan çekerek, bu verileri birleştirip bir obje olarak return etmektir.
-
-Fonksiyon içerisinde, axios kütüphanesi kullanılarak iki farklı API çağrısı yapılmaktadır. İlk olarak, user bilgileri için "https://jsonplaceholder.typicode.com/users/{user_id}" endpoint'i kullanılır. Burada, '{user_id}' yerine parametredeki user id değeri yazılmalıdır. İkinci olarak, ilgili kullanıcının post'ları için "https://jsonplaceholder.typicode.com/posts?userId={user_id}" endpoint'i kullanılır. Yine burada, '{user_id}' yerine parametredeki user id değeri yazılmalıdır.
-
-Bu iki API çağrısı sonucu elde edilen veriler, birleştirilerek aşağıdaki gibi bir obje olarak return edilir:
-
-```javascript
-{
-  id: user_id,
-  name: user_name,
-  username: user_username,
-  email: user_email,
-  posts: [
-    {
-      id: post_id,
-      title: post_title,
-      body: post_body
-    },
-    ...
-  ]
-}
 
