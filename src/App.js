@@ -7,7 +7,6 @@ function App() {
   const appHeight = () => {
     const doc = document.documentElement
     doc.style.setProperty('--app-height', `${window.innerHeight}px`)
-    doc.style.setProperty('--container-height', `${window.innerHeight*0.60}px`)
   }
   useEffect(() => {
     window.addEventListener('resize', appHeight);
@@ -18,7 +17,7 @@ function App() {
   }, []); // useEffect sadece bir kez çağırılsın
  
   return (
-    <div className="App app-height" style={{ height: 'var(--app-height)'}}> 
+    <div className="App"> 
       <TodoApp />
     </div>
   );

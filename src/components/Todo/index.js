@@ -37,11 +37,11 @@ function TodoApp() {
 
 
     return (
-        <div >
+        <>
             <Header />
             <List setDone={setTasks} tasks={tasks} />
             <Form addTask={setTasks} tasks={tasks} />
-        </div>
+        </>
     )
 }
 

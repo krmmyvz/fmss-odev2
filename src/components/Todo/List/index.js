@@ -19,48 +19,72 @@ function List({ setDone, tasks }) {
       return item;
     });
     setDone(updatedTasks);
+
   }
 
   const handleDeleteClick = (index) => {
-    const updatedTasks = tasks.filter((item, i) => i !== index);
+    const updatedTasks = tasks.filter((item,i) => i !== index);
     setDone(updatedTasks);
   }
 
+  const [filteredTasks, setFilteredTasks] = useState(tasks); // default filter: show all tasks
+
+  const handleAllTasks = () => {
+    setFilteredTasks(tasks);
+  };
+
+  const handleActiveTasks = () => {
+    const activeTasks = tasks.filter(task => !task.status);
+    setFilteredTasks(activeTasks);
+  };
+
+  const handleCompletedTasks = () => {
+    const completedTasks = tasks.filter(task => task.status);
+    setFilteredTasks(completedTasks);
+  };
+
   return (
+    <>
+      <div className='filter-container'>
+        <button onClick={handleAllTasks}>All</button>
+        <button onClick={handleActiveTasks}>Active</button>
+        <button onClick={handleCompletedTasks}>Completed</button>
+      </div>
+      <div id='lists'>
+        <ul className='list'>
+          {tasks.map((item, i) => (
 
-    <div id='lists' style={{ height: 'var(--container-height)' }}>
-      <ul className='list'>
-        {tasks.map((item, i) => (
+            <li key={i}  >
+              <label className="todo-label">
+                <input
+                  type='checkbox'
+                  checked={item.status}
+                  onChange={() => handleCheckboxChange(i)}
 
-          <li key={i}  >
-            <label className="todo-label">
-              <input
-                type='checkbox'
-                checked={item.status}
-                onChange={() => handleCheckboxChange(i)}
+                />
+                {item.status ? (
+                  <div className='md-filled' >
+                    <MdCheckBox />
+                  </div>
 
-              />
-              {item.status ? (
-                <div className='md-filled' >
-                  <MdCheckBox />
-                </div>
+                ) : (
+                  <div className='md-outline'>
+                    <MdCheckBoxOutlineBlank />
+                  </div>
 
-              ) : (
-                <div className='md-outline'>
-                  <MdCheckBoxOutlineBlank />
-                </div>
+                )}
 
-              )}
+                <span>{item.task_name}</span>
+                <button className='delete-button' onClick={() => handleDeleteClick(i)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                  {isHovered ? <MdDelete /> : <MdDeleteOutline />}
+                </button>
+              </label>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
 
-              <span>{item.task_name}</span>
-              <button className='delete-button' onClick={() => handleDeleteClick(i)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                {isHovered ? <MdDelete /> : <MdDeleteOutline />}
-              </button>
-            </label>
-          </li>
-        ))}
-      </ul>
-    </div>
   )
 }
 

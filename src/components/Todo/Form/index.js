@@ -7,7 +7,6 @@ function Form({ addTask, tasks }) {
 
     const [form, setForm] = useState(initialFormValues)
     const [checked, setChecked] = useState(initialFormValues.status);
-    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         setForm(initialFormValues)
@@ -24,7 +23,6 @@ function Form({ addTask, tasks }) {
         }
         addTask([...tasks, form])
         setForm(initialFormValues)
-        setIsOpen(false)
     }
 
 
@@ -33,37 +31,9 @@ function Form({ addTask, tasks }) {
     };
 
 
-    const whenAllChecked = () => {
-
-        if (typeof tasks[0] === 'undefined' || tasks[0] === null) {
-            return false
-        }
-
-        if (tasks.every(item => item.status === tasks[0].status)) {
-            if (tasks[0].status) {
-                addTask(tasks.map((item) => {
-                    return { ...item, status: false }
-                }))
-                setChecked(false)
-            } else {
-                addTask(tasks.map((item) => {
-                    return { ...item, status: true }
-                }))
-                setChecked(true)
-            }
-        } else {
-            addTask(tasks.map((item) => {
-                return { ...item, status: !checked }
-            }))
-            setChecked(!checked)
-        }
-
-    }
-
-
     return (
         <>
-            <form className={`form-container ${isOpen ? "" : "active"}`} onSubmit={onSubmit}>
+            <form className={`form-container`} onSubmit={onSubmit}>
                 <input
                     name="status"
                     type="checkbox"
@@ -74,7 +44,6 @@ function Form({ addTask, tasks }) {
                     }}
                     defaultChecked={checked}
                     value={form.status}
-                    onChange={whenAllChecked}
                 ></input>
                 <input
                     name="task_name"
