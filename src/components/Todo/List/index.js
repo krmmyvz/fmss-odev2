@@ -25,7 +25,6 @@ function List({ setDone, tasks }) {
       return item;
     });
     setDone(updatedTasks);
-    setFilteredTasks(updatedTasks);
   }
 
   // Görevi listeden siler ve günceller
