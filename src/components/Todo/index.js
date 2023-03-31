@@ -15,13 +15,17 @@ function TodoApp() {
           return JSON.parse(savedTasks);
         } else {
           return [{
-            task_name: "To Do Uygulamasına Hoş Geldin!",
+            task_name: "Welcome to To Do App!",
             status: false
           },
           {
-            task_name: "Aşağıdan kendine yeni bir görev ekleyebilirsin!",
+            task_name: "Let's add a task to handle!",
             status: false
           },
+          {
+            task_name: "Your tasks won't forget you even if you close your browser!",
+            status: false
+          }
         ];
         }
       });

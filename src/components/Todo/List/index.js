@@ -26,18 +26,19 @@ function List({ setDone, tasks }) {
     setDone(updatedTasks);
   }
 
-
   return (
 
     <div id='lists' style={{ height: 'var(--container-height)' }}>
       <ul className='list'>
         {tasks.map((item, i) => (
-          <li key={i}>
+
+          <li key={i}  >
             <label className="todo-label">
               <input
                 type='checkbox'
                 checked={item.status}
                 onChange={() => handleCheckboxChange(i)}
+
               />
               {item.status ? (
                 <div className='md-filled' >
@@ -56,18 +57,6 @@ function List({ setDone, tasks }) {
                 {isHovered ? <MdDelete /> : <MdDeleteOutline />}
               </button>
             </label>
-            {/* <label className="todo-label">
-              <input
-                type='checkbox'
-                checked={item.status}
-                onChange={() => handleCheckboxChange(i)}
-              />
-
-              <i className="check"></i>
-
-              <span>{item.task_name}</span>
-              <button className='delete-button' onClick={() => handleDeleteClick(i)}><MdDeleteOutline/></button>
-            </label> */}
           </li>
         ))}
       </ul>

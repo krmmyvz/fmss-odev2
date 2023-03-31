@@ -2,26 +2,27 @@
 #header {
     width: 90vw;
     max-width: 700px;
-    background-color: #f4f6e4;
-    height: 84px;
+    background-color: #284b63;
     border-radius: 24px 24px 0 0;
     display: flex;
     align-items: center;
-    color: #AD9696;
-}
-
-#header div{
-    flex-grow: 1;
+    color: #fefefe;
     padding: 24px;
+    box-sizing: border-box;
 }
 
-#header a{
+#header div {
+    flex-grow: 1;
+
+}
+
+#header a {
     text-decoration: none;
-    color: #AD9696;
+    color: #fefefe;
     width: 96px;
     font-size: 16px;
-    padding: 12px 24px;
-    text-align: center;
+    padding: 0;
+    text-align: right;
 }
 
 /*Liste Dekorasyonu*/
@@ -47,85 +48,86 @@
     flex-direction: column;
     box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    padding: 6px 16px;
 }
 
 /*Liste İtemlerinin Kişiselleştirmeleri*/
 .todo-label {
     display: flex;
     align-items: center;
-    padding: 8px;
     font-size: 18px;
     color: #000;
     cursor: pointer;
+    margin: 12px;
 }
 
 .todo-label input[type="checkbox"] {
-    position: absolute;
+    position: fixed;
+    top: 0;
     visibility: hidden;
 }
 
-.md-filled, .md-outline{
+.md-filled,
+.md-outline {
     display: flex;
     border: none;
     border-radius: 50%;
     cursor: pointer;
     height: 42px;
-    width: 42px;
+    flex-basis: 42px;
     font-size: 24px;
     transition: all 0.2s ease-in-out;
     align-items: center;
     justify-content: center;
-    color: #915A12
+    color: #3c6e71;
 }
 
-.md-filled:hover, .md-outline:hover{
+.md-filled:hover,
+.md-outline:hover {
     background-color: #f5f5f5;
 }
 
 .todo-label input[type="checkbox"]~span {
     flex-grow: 1;
+    width: calc(100% - 84px);
     padding: 0 20px;
-    white-space: wrap;
-    transition: 0.5s;
-}
-
-.todo-label input[type="checkbox"]~span::before {
-    content: "";
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: #f1faee;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.5s;
+    transition:  0.5s ease-in;
 }
 
 .todo-label input[type="checkbox"]:checked~span {
-    color: #585b57;
-    text-decoration: line-through;
+    color: #686767;
+    text-decoration: 2px line-through;
+    text-decoration-color: #3c6e71;
 }
 
-.delete-button{
-    display: flex;
-    background-color: #f5f5f5;
+
+.delete-button {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #d9d9d9;
     border: none;
     border-radius: 50%;
     cursor: pointer;
     height: 42px;
     width: 42px;
-    font-size: 24px;
+    padding: 7px;
     transition: all 0.2s ease-in-out;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
     visibility: hidden;
 }
 
-.list>li:hover .delete-button{
-    visibility:visible;
+.delete-button svg {
+    color: #666;
+    height: auto;
+    width: 100%;
 }
-.delete-button:hover{
+
+.list>li:hover .delete-button {
+    visibility: visible;
+}
+
+.delete-button:hover {
     background-color: #ddd;
 }
 
@@ -133,8 +135,7 @@
 .form-container {
     width: 90vw;
     max-width: 700px;
-    height: 84px;
-    background-color: #d4a373;
+    background-color: #3c6e71;
     padding: 16px;
     box-sizing: border-box;
     display: flex;
@@ -145,11 +146,11 @@
 }
 
 .form-container input[type="text"] {
-    flex: 1;
+    flex-grow: 1;
+    width: calc(100% - 48px);
     box-sizing: border-box;
     border: none;
     border-radius: 16px;
-    -webkit-appearance: none;
     padding: 14px 24px;
     font-size: 18px;
     font-family: sans-serif;
@@ -163,11 +164,13 @@
     justify-content: center;
     width: 48px;
     height: 48px;
+    appearance: none;
+    -webkit-appearance: none;
     border-radius: 50%;
-    background-color: #FFF;
-    color: #d4a373;
+    background-color: #FFFFFF;
+    color: #7DD3E3;
     font-size: 2rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 1rem #0000001A;
     transition: all 0.3s ease-in-out;
     outline: none;
     border: none;
@@ -175,5 +178,65 @@
 }
 
 
-  
-  
+@media only screen and (max-width: 400px) {
+
+    #header,
+    #lists,
+    .form-container {
+        width: 97vw;
+    }
+
+    #header {
+        padding: 14px 24px;
+    }
+
+    #header a {
+        font-size: 14px;
+    }
+
+    #header h2 {
+        font-size: 18px;
+    }
+
+    #header h4 {
+        font-size: 12px;
+    }
+
+    .list>li {
+        background-color: #FFFFFF;
+        margin: 10px 12px;
+    }
+
+    .todo-label input[type="checkbox"]~span {
+        flex-grow: 1;
+        padding: 0 12px;
+        transition: 0.5s;
+        font-size: 14px;
+    }
+
+    .delete-button {
+        visibility: visible;
+        padding: 12px;
+        background-color: #fff;
+    }
+
+    .form-container button {
+        width: 42px;
+        height: 42px;
+        padding: 10px;
+    }
+
+    .form-container input[type="text"] {
+        flex-grow: 1;
+        width: calc(100% - 48px);
+        box-sizing: border-box;
+        border: none;
+        border-radius: 16px;
+        padding: 12px 16px;
+        font-size: 15px;
+        font-family: sans-serif;
+        margin-right: 10px;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+
+}
