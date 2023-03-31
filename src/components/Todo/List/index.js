@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { MdDelete, MdDeleteOutline, MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
 
 // Form bileşeni oluşturuyoruz ve setDone, tasks props'larını alıyoruz
@@ -54,6 +54,10 @@ function List({ setDone, tasks }) {
     setFilteredTasks(completedTasks);
   };
 
+  useEffect(() => {
+    setFilteredTasks(tasks);
+  }, [tasks]);
+
   return (
     <>
       <div id='lists'>
@@ -69,7 +73,7 @@ function List({ setDone, tasks }) {
           {/*TODO: filteredTasks dizisi çağırıldığında  filtreleme butonları çalışıyor*/}
           {/*ama görev listesi otomatik olarak güncellenmiyor*/}
           {/*bu yüzden şimdilik tasks dizisi çağırıldı*/}
-          {tasks.map((item, i) => (
+          {filteredTasks.map((item, i) => (
             <li key={i}  >
 
               {/* Görev etiketi, tamamlanmış mı, değil mi? */}
