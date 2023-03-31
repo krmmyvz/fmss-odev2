@@ -17,9 +17,9 @@ function List({ setDone, tasks }) {
   }
 
    // Görevin tamamlandığını gösteren checkbox işaretini değiştirir ve günceller
-  const handleCheckboxChange = (index) => {
-    const updatedTasks = tasks.map((item, i) => {
-      if (i === index) {
+  const handleCheckboxChange = (id) => {
+    const updatedTasks = tasks.map((item) => {
+      if (item.id === id) {
         return { ...item, status: !item.status };
       }
       return item;
@@ -29,8 +29,8 @@ function List({ setDone, tasks }) {
   }
 
   // Görevi listeden siler ve günceller
-  const handleDeleteClick = (index) => {
-    const updatedTasks = tasks.filter((item,i) => i !== index);
+  const handleDeleteClick = (id) => {
+    const updatedTasks = tasks.filter((item) => item.id !== id);
     setDone(updatedTasks);
     setFilteredTasks(updatedTasks);
   }
@@ -77,7 +77,7 @@ function List({ setDone, tasks }) {
                 <input
                   type='checkbox'
                   checked={item.status}
-                  onChange={() => handleCheckboxChange(i)}
+                  onChange={() => handleCheckboxChange(item.id)}
 
                 />
                 {item.status ? (
@@ -95,7 +95,7 @@ function List({ setDone, tasks }) {
                 <span>{item.task_name}</span>
 
                 {/* Görevi silmek için buton */}
-                <button className='delete-button' onClick={() => handleDeleteClick(i)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                <button className='delete-button' onClick={() => handleDeleteClick(item.id)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                   {isHovered ? <MdDelete /> : <MdDeleteOutline />}
                 </button>
               </label>

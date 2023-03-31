@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { MdAdd } from "react-icons/md";
+import { v4 as uuidv4 } from 'uuid';
 
-const initialFormValues = { task_name: "", status: false };
+const initialFormValues = { id: uuidv4(),task_name: "", status: false };
 
 // Form bileşeni oluşturuyoruz ve addTask, tasks props'larını alıyoruz
 function Form({ addTask, tasks }) {

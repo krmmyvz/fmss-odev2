@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import List from './List';
 import Form from './Form';
+import { v4 as uuidv4 } from 'uuid';
 import './styles.css'
 import Header from './Header';
 
@@ -16,14 +17,17 @@ function TodoApp() {
       return JSON.parse(savedTasks);
     } else {
       return [{
+        id: uuidv4(),
         task_name: "Welcome to To Do App!",
         status: false
       },
       {
+        id: uuidv4(),
         task_name: "Let's add a task to handle!",
         status: false
       },
       {
+        id: uuidv4(),
         task_name: "Your tasks won't forget you even if you close your browser!",
         status: true
       }
@@ -34,6 +38,7 @@ function TodoApp() {
   // Veriler her güncellendiğinde LocalStorage'a kaydeder
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    console.log(tasks)
   }, [tasks]);
 
   return (
