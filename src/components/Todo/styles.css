@@ -132,12 +132,14 @@
     width: calc(100% - 84px);
     padding: 0 20px;
     transition: 0.5s ease-in;
+    font-style: normal;
 }
 
 .todo-label input[type="checkbox"]:checked~span {
     color: #686767;
     text-decoration: 2px line-through;
     text-decoration-color: #3c6e71;
+
 }
 
 
@@ -270,8 +272,6 @@
         border-radius: 50%;
     }
     
-
-
     .form-container {
         margin-bottom: 10px;
     }
