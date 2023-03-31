@@ -5,15 +5,15 @@ import { MdDelete, MdDeleteOutline, MdCheckBox, MdCheckBoxOutlineBlank } from 'r
 function List({ setDone, tasks }) {
 
   // Fare, butonun üzerindeyken göstermek için durum değişkeni
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(null);
 
   // Fare delete butonun üstündeyken değişkeni true,
   // butondan ayrıldığında false yapar
-  const handleMouseEnter = () => {
-    setIsHovered(true);
+  const handleMouseEnter = (id) => {
+    setIsHovered(id);
   }
-  const handleMouseLeave = () => {
-    setIsHovered(false);
+  const handleMouseLeave = (id) => {
+    setIsHovered(null);
   }
 
   // Görevin tamamlandığını gösteren checkbox işaretini değiştirir ve günceller
@@ -95,8 +95,9 @@ function List({ setDone, tasks }) {
                 <span>{item.task_name}</span>
 
                 {/* Görevi silmek için buton */}
-                <button className='delete-button' onClick={() => handleDeleteClick(item.id)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                  {isHovered ? <MdDelete /> : <MdDeleteOutline />}
+                <button className='delete-button' onClick={() => handleDeleteClick(item.id)}
+                 onMouseEnter={()=>handleMouseEnter(item.id)} onMouseLeave={()=>handleMouseLeave(item.id)}>
+                  {isHovered === item.id ? <MdDelete /> : <MdDeleteOutline />}
                 </button>
               </label>
             </li>
