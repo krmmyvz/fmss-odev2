@@ -69,10 +69,6 @@ function List({ setDone, tasks }) {
       </div>
         {/* Görev listesi */}
         <ul className='list'>
-
-          {/*TODO: filteredTasks dizisi çağırıldığında  filtreleme butonları çalışıyor*/}
-          {/*ama görev listesi otomatik olarak güncellenmiyor*/}
-          {/*bu yüzden şimdilik tasks dizisi çağırıldı*/}
           {filteredTasks.map((item, i) => (
             <li key={i}  >
 
