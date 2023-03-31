@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import { MdDelete, MdDeleteOutline, MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
 
+// Form bileşeni oluşturuyoruz ve setDone, tasks props'larını alıyoruz
 function List({ setDone, tasks }) {
 
-  const [isHovered, setIsHovered] = useState(false);
+   // Fare, butonun üzerindeyken göstermek için durum değişkeni
+   const [isHovered, setIsHovered] = useState(false);
+
+  // Fare delete butonun üstündeyken değişkeni true,
+  // butondan ayrıldığında false yapar
   const handleMouseEnter = () => {
     setIsHovered(true);
   }
@@ -11,6 +16,7 @@ function List({ setDone, tasks }) {
     setIsHovered(false);
   }
 
+   // Görevin tamamlandığını gösteren checkbox işaretini değiştirir ve günceller
   const handleCheckboxChange = (index) => {
     const updatedTasks = tasks.map((item, i) => {
       if (i === index) {
@@ -18,26 +24,31 @@ function List({ setDone, tasks }) {
       }
       return item;
     });
-    setDone(updatedTasks);
-
+    setDone(updatedTasks);    
+    setFilteredTasks(updatedTasks);
   }
 
+  // Görevi listeden siler ve günceller
   const handleDeleteClick = (index) => {
     const updatedTasks = tasks.filter((item,i) => i !== index);
     setDone(updatedTasks);
+    setFilteredTasks(updatedTasks);
   }
 
-  const [filteredTasks, setFilteredTasks] = useState(tasks); // default filter: show all tasks
+  // Filtrelenmiş görevleri listelemek için durum değişkeni
+  const [filteredTasks, setFilteredTasks] = useState(tasks);
 
+  // Tüm görevleri listeler
   const handleAllTasks = () => {
     setFilteredTasks(tasks);
   };
 
+  // Tamamlanmamış görevleri filtreler ve listeler
   const handleActiveTasks = () => {
     const activeTasks = tasks.filter(task => !task.status);
     setFilteredTasks(activeTasks);
   };
-
+  // Tamamlanmış görevleri filtreler ve listeler
   const handleCompletedTasks = () => {
     const completedTasks = tasks.filter(task => task.status);
     setFilteredTasks(completedTasks);
@@ -46,14 +57,22 @@ function List({ setDone, tasks }) {
   return (
     <>
       <div id='lists'>
+      {/* Filtreleme butonları */}
       <div className='filter-container'>
-        <button onClick={handleAllTasks}>All</button>
-        <button onClick={handleActiveTasks}>Active</button>
-        <button onClick={handleCompletedTasks}>Completed</button>
+        <button onClick={handleAllTasks}>All<span>{tasks.length}</span></button>
+        <button onClick={handleActiveTasks}>Active<span>{tasks.filter(task => !task.status).length}</span></button>
+        <button onClick={handleCompletedTasks}>Completed<span>{tasks.filter(task => task.status).length}</span></button>
       </div>
+        {/* Görev listesi */}
         <ul className='list'>
+
+          {/*TODO: filteredTasks dizisi çağırıldığında  filtreleme butonları çalışıyor*/}
+          {/*ama görev listesi otomatik olarak güncellenmiyor*/}
+          {/*bu yüzden şimdilik tasks dizisi çağırıldı*/}
           {tasks.map((item, i) => (
             <li key={i}  >
+
+              {/* Görev etiketi, tamamlanmış mı, değil mi? */}
               <label className="todo-label">
                 <input
                   type='checkbox'
@@ -74,6 +93,8 @@ function List({ setDone, tasks }) {
                 )}
 
                 <span>{item.task_name}</span>
+
+                {/* Görevi silmek için buton */}
                 <button className='delete-button' onClick={() => handleDeleteClick(i)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                   {isHovered ? <MdDelete /> : <MdDeleteOutline />}
                 </button>

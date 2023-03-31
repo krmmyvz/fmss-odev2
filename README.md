@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# 2. Ödev (To Do App)
+Patika.dev &amp; FMSS Bilişim Front-end Practicum Hafta 2 - 2. Ödev
+Patika.dev linkim: "https://app.patika.dev/keremyvz"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Açıklama
 
-## Available Scripts
+Bu basit React uygulaması, bir kullanıcının yapması gereken görevleri kolayca takip edebilmesi için tasarlanmıştır. Kullanıcılar, uygulama aracılığıyla görev ekleyebilir, tamamlandığında işaretleyebilir ve silinebilir.
 
-In the project directory, you can run:
+![Ekran Görüntüsü](https://github.com/krmmyvz/fmss-odev1/blob/main/Console%20Output.png)
 
-### `npm start`
+## Özellikler
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Kullanıcılar görev ekleyebilir ve tamamlandıklarında işaretleyebilir.
+- Kullanıcılar tamamlanmış görevleri silebilirler.
+- Uygulama, her bir görevin tamamlanıp tamamlanmadığını takip eder ve görevlerin durumlarına göre uygun şekilde gösterir.
+- Kullanıcıların görevleri yerel depolamada saklanır, böylece sayfayı yenilese bile görevler kaybolmaz.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Kurulum
 
-### `npm test`
+1. Bu uygulamayı yerel olarak çalıştırmak için, öncelikle bu projeyi kopyalayın veya indirin.
+2. `npm install` komutunu çalıştırarak gerekli bağımlılıkları yükleyin.
+3. `npm start` komutunu çalıştırarak konsol uygulamasını başlatın. Uygulama,  [link](http://localhost:3000).adresinde çalışacaktır.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Fonksiyon Açıklaması
 
-### `npm run build`
+Bu ödevde, default olarak dışa aktarılan ve async olarak tanımlanan bir fonksiyon yazmanız gerekmektedir. Bu fonksiyon, Number tipinde bir parametre almalı ve bu parametre user id'yi belirtmelidir. Fonksiyonun görevi, verilen user id'ye göre ilgili kullanıcının verilerini ve post'larını API'dan çekerek, bu verileri birleştirip bir obje olarak return etmektir.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Fonksiyon içerisinde, axios kütüphanesi kullanılarak iki farklı API çağrısı yapılmaktadır. İlk olarak, user bilgileri için "https://jsonplaceholder.typicode.com/users/{user_id}" endpoint'i kullanılır. Burada, '{user_id}' yerine parametredeki user id değeri yazılmalıdır. İkinci olarak, ilgili kullanıcının post'ları için "https://jsonplaceholder.typicode.com/posts?userId={user_id}" endpoint'i kullanılır. Yine burada, '{user_id}' yerine parametredeki user id değeri yazılmalıdır.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Bu iki API çağrısı sonucu elde edilen veriler, birleştirilerek aşağıdaki gibi bir obje olarak return edilir:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```javascript
+{
+  id: user_id,
+  name: user_name,
+  username: user_username,
+  email: user_email,
+  posts: [
+    {
+      id: post_id,
+      title: post_title,
+      body: post_body
+    },
+    ...
+  ]
+}
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

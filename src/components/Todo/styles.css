@@ -61,13 +61,11 @@
 
 .filter-container>button {
     display: flex;
-    width: 20%;
     align-items: center;
-    justify-content: center;
     appearance: none;
     -webkit-appearance: none;
     border-radius: 16px;
-    background-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.8);
     color: #284b63;
     font-size: 1.1rem;
     margin: 0 10px;
@@ -76,6 +74,21 @@
     outline: none;
     border: none;
     cursor: pointer;
+}
+
+.filter-container>button>span {
+    display: inline-block;
+    margin-left: 16px;
+    width: 25px;
+    height: 25px;
+    line-height:25px;
+    border: 1px solid #777;
+    border-radius: 50%;
+}
+
+.filter-container>button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transition: background-color 0.2s ease-in;
 }
 
 /*Liste İtemlerinin Kişiselleştirmeleri*/
@@ -236,6 +249,7 @@
     #lists {
         flex-grow: 1;
     }
+
     .filter-container>button {
         font-size: 0.7rem;
     }
