@@ -27,7 +27,6 @@
 
 /*Liste Dekorasyonu*/
 #lists {
-    position: relative;
     background-color: #FFFFFF;
     width: 90vw;
     height: calc(var(--app-height) * 0.6);
@@ -43,10 +42,6 @@
 
 }
 
-.list {
-    padding-top: 64px;
-}
-
 .list>li {
     background-color: #FFFFFF;
     margin: 10px 32px;
@@ -57,7 +52,6 @@
 }
 
 .filter-container {
-    position: fixed;
     display: flex;
     justify-content: center;
     width: 90vw;

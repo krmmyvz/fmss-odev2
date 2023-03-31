@@ -4,8 +4,8 @@ import { MdDelete, MdDeleteOutline, MdCheckBox, MdCheckBoxOutlineBlank } from 'r
 // Form bileşeni oluşturuyoruz ve setDone, tasks props'larını alıyoruz
 function List({ setDone, tasks }) {
 
-   // Fare, butonun üzerindeyken göstermek için durum değişkeni
-   const [isHovered, setIsHovered] = useState(false);
+  // Fare, butonun üzerindeyken göstermek için durum değişkeni
+  const [isHovered, setIsHovered] = useState(false);
 
   // Fare delete butonun üstündeyken değişkeni true,
   // butondan ayrıldığında false yapar
@@ -16,7 +16,7 @@ function List({ setDone, tasks }) {
     setIsHovered(false);
   }
 
-   // Görevin tamamlandığını gösteren checkbox işaretini değiştirir ve günceller
+  // Görevin tamamlandığını gösteren checkbox işaretini değiştirir ve günceller
   const handleCheckboxChange = (id) => {
     const updatedTasks = tasks.map((item) => {
       if (item.id === id) {
@@ -24,7 +24,7 @@ function List({ setDone, tasks }) {
       }
       return item;
     });
-    setDone(updatedTasks);    
+    setDone(updatedTasks);
     setFilteredTasks(updatedTasks);
   }
 
@@ -60,13 +60,13 @@ function List({ setDone, tasks }) {
 
   return (
     <>
-      <div id='lists'>
       {/* Filtreleme butonları */}
       <div className='filter-container'>
         <button onClick={handleAllTasks}>All<span>{tasks.length}</span></button>
         <button onClick={handleActiveTasks}>Active<span>{tasks.filter(task => !task.status).length}</span></button>
         <button onClick={handleCompletedTasks}>Completed<span>{tasks.filter(task => task.status).length}</span></button>
       </div>
+      <div id='lists'>
         {/* Görev listesi */}
         <ul className='list'>
           {filteredTasks.map((item, i) => (
