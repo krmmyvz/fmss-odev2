@@ -12,7 +12,7 @@ function List({ setDone, tasks }) {
   const handleMouseEnter = (id) => {
     setIsHovered(id);
   }
-  const handleMouseLeave = (id) => {
+  const handleMouseLeave = () => {
     setIsHovered(null);
   }
 
@@ -31,8 +31,9 @@ function List({ setDone, tasks }) {
   // Görevi listeden siler ve günceller
   const handleDeleteClick = (id) => {
     const updatedTasks = tasks.filter((item) => item.id !== id);
-    setDone(updatedTasks);
-    setFilteredTasks(updatedTasks);
+    const updatedTasksCopy = updatedTasks.map((item) => Object.assign({}, item));
+    setDone(updatedTasksCopy);
+    setFilteredTasks(updatedTasksCopy);
   }
 
   // Filtrelenmiş görevleri listelemek için durum değişkeni
