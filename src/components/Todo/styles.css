@@ -27,10 +27,12 @@
 
 /*Liste Dekorasyonu*/
 #lists {
+    position: relative;
     background-color: #FFFFFF;
     width: 90vw;
     height: calc(var(--app-height) * 0.6);
     max-width: 700px;
+
     box-shadow: 0 8px 16px #0000001a;
     overflow-y: auto;
     overflow-x: hidden;
@@ -39,6 +41,10 @@
     flex-wrap: wrap;
 
 
+}
+
+.list {
+    padding-top: 64px;
 }
 
 .list>li {
@@ -51,12 +57,15 @@
 }
 
 .filter-container {
+    position: fixed;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 90vw;
+    max-width: 700px;
     max-width: 700px;
     background-color: #3c6e71;
     padding: 10px;
+    box-sizing: border-box;
 }
 
 .filter-container>button {
@@ -67,21 +76,23 @@
     border-radius: 16px;
     background-color: rgba(255, 255, 255, 0.8);
     color: #284b63;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin: 0 10px;
-    padding: 8px 20px;
+    padding: 4px 6px 4px 14px;
     box-shadow: 0 0.5rem 1rem #0000001A;
     outline: none;
     border: none;
     cursor: pointer;
+
 }
 
 .filter-container>button>span {
+    display: flex;
     display: inline-block;
     margin-left: 16px;
-    width: 25px;
-    height: 25px;
-    line-height:25px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
     border: 1px solid #777;
     border-radius: 50%;
 }
@@ -90,6 +101,7 @@
     background-color: rgba(255, 255, 255, 1);
     transition: background-color 0.2s ease-in;
 }
+
 
 /*Liste İtemlerinin Kişiselleştirmeleri*/
 .todo-label {
@@ -221,7 +233,7 @@
 }
 
 
-@media only screen and (max-width: 415px) {
+@media only screen and (max-width: 600px) {
 
     #header,
     .filter-container,
@@ -251,6 +263,7 @@
     #lists {
         flex-grow: 1;
     }
+
     .filter-container {
         box-sizing: border-box;
     }
@@ -261,17 +274,17 @@
         margin: 0 5px;
         padding: 4px 8px;
     }
-    
+
     .filter-container>button>span {
         display: inline-block;
         margin-left: 16px;
         width: 20px;
         height: 20px;
-        line-height:20px;
+        line-height: 20px;
         border: 1px solid #777;
         border-radius: 50%;
     }
-    
+
     .form-container {
         margin-bottom: 10px;
     }
