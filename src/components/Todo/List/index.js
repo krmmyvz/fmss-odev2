@@ -31,11 +31,8 @@ function List({ setDone, tasks }) {
   // Görevi listeden siler ve günceller
   const handleDeleteClick = (id) => {
     const updatedTasks = tasks.filter((item) => item.id !== id);
-    const updatedTasksCopy = updatedTasks.map((item) => Object.assign({}, item));
-    setDone(updatedTasksCopy);
-    setFilteredTasks(updatedTasksCopy);
+    setDone(updatedTasks)
   }
-
   // Filtrelenmiş görevleri listelemek için durum değişkeni
   const [filteredTasks, setFilteredTasks] = useState(tasks);
 
@@ -79,7 +76,6 @@ function List({ setDone, tasks }) {
                   type='checkbox'
                   checked={item.status}
                   onChange={() => handleCheckboxChange(item.id)}
-
                 />
                 {item.status ? (
                   <div className='md-filled' >
@@ -97,7 +93,7 @@ function List({ setDone, tasks }) {
 
                 {/* Görevi silmek için buton */}
                 <button className='delete-button' onClick={() => handleDeleteClick(item.id)}
-                 onMouseEnter={()=>handleMouseEnter(item.id)} onMouseLeave={()=>handleMouseLeave(item.id)}>
+                  onMouseEnter={() => handleMouseEnter(item.id)} onMouseLeave={() => handleMouseLeave(item.id)}>
                   {isHovered === item.id ? <MdDelete /> : <MdDeleteOutline />}
                 </button>
               </label>

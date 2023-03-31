@@ -29,7 +29,7 @@ function TodoApp() {
       {
         id: uuidv4(),
         task_name: "Your tasks won't forget you even if you close your browser!",
-        status: true
+        status: false
       }
       ];
     }
@@ -38,7 +38,6 @@ function TodoApp() {
   // Veriler her güncellendiğinde LocalStorage'a kaydeder
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    console.log(tasks)
   }, [tasks]);
 
   return (
